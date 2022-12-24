@@ -1,0 +1,29 @@
+.navbar-brand-image{
+    width: 80px;
+    height: 60px;
+}
+
+.navbar-div{
+    padding-left: 50px;
+    padding-left: 50px;
+}
+.navbar-toggler{
+    position: absolute; 
+    right: 0;
+    
+}
+.company-title{
+    position: absolute; 
+    margin-left: 100px;
+}
+.company-name{
+    text-decoration: none;
+    color: rgb(51, 49, 49);
+    font-size: large;
+}
+.search-box-home{
+    margin: auto;
+}
+.search-box-div{
+    margin-top: 10px;
+}

@@ -39,4 +39,4 @@ class ProductImages(models.Model):
     product_image = models.ImageField(upload_to='ProductImages')
 
     def __str__(self):
-        return self.product
+        return self.product.product_name
