@@ -21,11 +21,12 @@ class Category(models.Model):
 class Product(models.Model):
     product_name = models.CharField(max_length=250)
     product_description = models.TextField(null=True, blank=True)
-    product_price = models.FloatField()
-    product_discount = models.FloatField(null=True, blank=True)
-    product_final_price = models.FloatField()
+    product_price = models.IntegerField()
+    product_discount = models.IntegerField(null=True, blank=True, default=0)
+    product_final_price = models.IntegerField()
     product_slug = models.SlugField(unique=True, max_length=250, null=True, blank=True)
     product_category = models.ForeignKey(Category,on_delete=models.SET_NULL, null=True, blank=True)
+    product_img = models.ImageField(upload_to='ProductImages', null=True, blank=True)
 
     def __str__(self):
         return self.product_name

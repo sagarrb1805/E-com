@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="categories">
             {% for category in categories %}
-                <div class='col-sm-6 col-md-2 category-image-div'>
+                <div class='col-4 col-sm-3 col-md-3 col-lg-2 category-image-div'>
                     <a href=""><img class="category-image" src="{{ category.category_image.url }}" alt=""></a>
                     <p>{{ category.category_name }}</p>
                 </div>
@@ -15,7 +15,7 @@
     </div>
 
     <div class="container-fluid">
-        <div class="row" style="background: url({% static 'ChristmasSale.png' %});">
+        <div class="row banner-div" style="background: url({% static 'ChristmasSale.png' %});">
             
                 <video autoplay="autoplay" loop muted style="height: 100px;">
                     <source src="{% static 'ChristmasSale.mp4' %}" type="video/mp4">
@@ -23,6 +23,23 @@
                     <source src="{% static 'ChristmasSale.ogg' %}" type="video/ogg">
                 </video>
            
+        </div>
+        <div class="row products">
+            
+                {% for product in products%}
+                <div class="card col-md-3 col-sm-6 card-div m-4">
+                    {% if product.product_img %}
+                        <img src="{{ product.product_img.url }}" class="card-img-top" alt="Image not found">
+                    {% else %}
+                        <img src="" class="card-img-top" alt="Image Not Found">
+                    {% endif %}
+                    <div class="card-body">
+                        <p class="card-text">{{ product.product_name }}</p>
+                        <p class="card-text">&#x20B9;{{ product.product_final_price }} <del style="color: gray;">{{ product.product_price }}</del>  <em style="color: green;">{{ product.product_discount }}% off</em></p>
+                    </div>
+                </div> 
+                {% endfor %}
+
         </div>
     </div>
 {% endblock %}

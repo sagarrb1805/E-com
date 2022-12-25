@@ -14,7 +14,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #020200;
+    background: #cccca6;
 }
 
 
@@ -27,4 +27,24 @@
 .category-image{
     width: 80%;
     height: 80px;
+}
+
+.banner-div{
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center;
+}
+
+.products{
+    text-align: center; 
+    justify-content: center;
+}
+
+.card-div{
+    width: 18em;
+    height: 350px;
+}
+
+.card-img-top{
+    height: 250px;
 }
