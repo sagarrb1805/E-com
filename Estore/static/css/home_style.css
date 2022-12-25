@@ -1,0 +1,30 @@
+.categories{
+    overflow-x: hidden;
+    white-space: nowrap;
+    margin-top: 15px;
+    scrollbar-width: thin;
+}
+.categories:hover {
+    overflow-x: scroll;
+}
+
+::-webkit-scrollbar {
+    height: 1px;
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #020200;
+}
+
+
+.category-image-div{
+    display: inline-block;
+    float: none;
+    text-align: center;
+}
+
+.category-image{
+    width: 80%;
+    height: 100px;
+}

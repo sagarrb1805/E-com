@@ -2,6 +2,16 @@
 
 {% block content %}
 
-    <h2>home page</h2>
+    <div class="container-fluid">
+        <div class="categories">
+            {% for category in categories %}
+                <div class='col-sm-6 col-md-2 category-image-div'>
+                    <a href=""><img class="category-image" src="{{ category.category_image.url }}" alt=""></a>
+                    <p>{{ category.category_name }}</p>
+                </div>
+            {% endfor %}
+            
+        </div>
+    </div>
 
 {% endblock %}
