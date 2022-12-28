@@ -6,7 +6,7 @@
         <div class="categories">
             {% for category in categories %}
                 <div class='col-4 col-sm-3 col-md-3 col-lg-2 category-image-div'>
-                    <a href=""><img class="category-image" src="{{ category.category_image.url }}" alt=""></a>
+                    <a href="{{ category.get_category_url }}"><img class="category-image" src="{{ category.category_image.url }}" alt=""></a>
                     <p>{{ category.category_name }}</p>
                 </div>
             {% endfor %}
@@ -35,11 +35,24 @@
                     {% endif %}
                     <div class="card-body">
                         <p class="card-text">{{ product.product_name }}</p>
-                        <p class="card-text">&#x20B9;{{ product.product_final_price }} <del style="color: gray;">{{ product.product_price }}</del>  <em style="color: green;">{{ product.product_discount }}% off</em></p>
+                        <hr>
+                        <p class="card-text"><a href="#"><button class="btn btn-outline-secondary" style="margin-right: 10px;">Add to Cart</button></a>&#x20B9;{{ product.product_final_price }} &nbsp;<del style="color: gray;">{{ product.product_price }}</del>  </p>
+                        <p><em style="color: green;">{{ product.product_discount }}% off</em></p>
                     </div>
                 </div> 
                 {% endfor %}
 
+        </div>
+
+        <div class="mx-auto">
+            {% if products.paginator.num_pages > 1 %}
+                <hr>
+                <div class="text-center">
+                    {% for pg in products.paginator.page_range %}
+                    <a href="?page={{pg}}" class="btn btn-light btn-sm {% if products.number == pg %} active {% endif %}">{{ pg }}</a>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

@@ -1,20 +1,29 @@
 from django.db import models
 from django.db.models.signals import pre_save
-from .utils import slugify_product_title, calculate_final_price
+from django.urls import reverse
+
+from .utils import slugify_name, slugify_category_name, calculate_final_price
 
 def product_pre_save(sender, instance, *args, **kwargs):
     if instance.product_slug == None:
-        slugify_product_title(instance)
+        slugify_name(instance)
     if instance.product_final_price == None:
         calculate_final_price(instance)
-
+def category_pre_save(instance, *args, **kwargs):
+    slugify_category_name(instance)
 
 class Category(models.Model):
     category_name = models.CharField(max_length=250)
+    category_slug = models.SlugField(unique=True, max_length=250, null=True, blank=True)
     category_image = models.ImageField(upload_to='CategoryImages/')
+
+    def get_category_url(self):
+        return reverse("products:home_view",kwargs={'category':self.category_slug})
 
     def __str__(self):
         return self.category_name
+
+pre_save.connect(category_pre_save, sender=Category)
 
 
 
