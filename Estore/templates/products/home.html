@@ -29,14 +29,14 @@
                 {% for product in products%}
                 <div class="card col-md-3 col-sm-6 card-div m-4">
                     {% if product.product_img %}
-                        <img src="{{ product.product_img.url }}" class="card-img-top" alt="Image not found">
+                        <a href="{{ product.get_absolute_url }}"><img src="{{ product.product_img.url }}" class="card-img-top" alt="Image not found"></a>
                     {% else %}
                         <img src="" class="card-img-top" alt="Image Not Found">
                     {% endif %}
                     <div class="card-body">
                         <p class="card-text">{{ product.product_name }}</p>
                         <hr>
-                        <p class="card-text"><a href="#"><button class="btn btn-outline-secondary" style="margin-right: 10px;">Add to Cart</button></a>&#x20B9;{{ product.product_final_price }} &nbsp;<del style="color: gray;">{{ product.product_price }}</del>  </p>
+                        <p class="card-text"><a href="#"><button class="btn btn-outline-secondary" style="margin-right: 10px;">Add to Cart</button></a>&#x20B9;{{ product.product_final_price }} &nbsp;<del style="color: gray;">&#x20B9;{{ product.product_price }}</del>  </p>
                         <p><em style="color: green;">{{ product.product_discount }}% off</em></p>
                     </div>
                 </div> 

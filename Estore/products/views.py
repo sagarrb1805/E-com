@@ -25,3 +25,14 @@ def home_view(request, category=None):
         products = paginator.page(paginator.num_pages)
 
     return render(request, 'products/home.html', {'categories':categories, 'products':products})
+
+def product_detail_view(request, cat=None, prd=None):
+    product_images = None
+    product = None
+    try:
+        category = Category.objects.get(category_slug=cat)
+        product = Product.objects.get(product_category=category, product_slug=prd)
+        product_images = ProductImages.objects.all().filter(product=product)
+    except:
+        pass
+    return render(request, 'products/detail.html', {'product':product, 'product_images':product_images})

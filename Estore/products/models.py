@@ -40,6 +40,9 @@ class Product(models.Model):
     def __str__(self):
         return self.product_name
 
+    def get_absolute_url(self):
+        return reverse("products:product_detail_view", kwargs={'cat':self.product_category.category_slug, 'prd':self.product_slug})
+
 
 pre_save.connect(product_pre_save, sender=Product)
 

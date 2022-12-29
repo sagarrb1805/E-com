@@ -1,0 +1,23 @@
+.product_path{
+    padding-top: 20px;
+}
+.product_path_links{
+    text-decoration: none;
+    color: black;
+}
+.product-image-div{
+    justify-content: center;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.product-text-div{
+    margin-top: 30px;
+    padding-left: 30px;
+}
+.product-price{
+    margin-top: 20px;
+}
+.add-to-cart-btn{
+    margin-top: 20px;
+}
