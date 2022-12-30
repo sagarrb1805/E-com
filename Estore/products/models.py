@@ -36,6 +36,9 @@ class Product(models.Model):
     product_slug = models.SlugField(unique=True, max_length=250, null=True, blank=True)
     product_category = models.ForeignKey(Category,on_delete=models.SET_NULL, null=True, blank=True)
     product_img = models.ImageField(upload_to='ProductImages', null=True, blank=True)
+    stock = models.IntegerField(default=10)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.product_name

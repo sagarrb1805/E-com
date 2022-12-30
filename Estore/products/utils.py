@@ -35,5 +35,5 @@ def slugify_name(instance, new_slug=None):
 
 def calculate_final_price(instance):
     
-    instance.product_final_price = instance.product_price - ((instance.product_price*instance.product_discount)/100)
+    instance.product_final_price = int(instance.product_price - ((instance.product_price*instance.product_discount)/100))
     return instance
