@@ -9,5 +9,8 @@ class Cart(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
 
+    def sub_total(self):
+        return self.product.product_price * self.quantity
+
     def __str__(self):
         return "{}".format(self.product)

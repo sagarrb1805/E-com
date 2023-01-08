@@ -8,11 +8,11 @@ from django.contrib import messages
 def user_register(request):
     if request.method == 'POST':
         name = request.POST.get('name')
-        phone_number = request.POST.get('phone_number')
+        # phone_number = request.POST.get('phone_number')
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
         email = request.POST.get('email')
-        address = request.POST.get('address')
+        # address = request.POST.get('address')
         
         if User.objects.filter(email=email):
             messages.error(request, "An account with this email exits try login")
@@ -22,9 +22,9 @@ def user_register(request):
             messages.error(request, "password doesn't match")
             return reverse('accounts:user_register')
         myuser = User.objects.create_user(username=email, email=email, password=password)
-        myuser.full_name = name
-        myuser.phone_number = phone_number
-        myuser.address = address
+        myuser.first_name = name
+        # myuser.phone_number = phone_number
+        # myuser.address = address
 
         myuser.save()
         messages.success(request, 'Your account has been successfuly created')
