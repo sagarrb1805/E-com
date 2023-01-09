@@ -1,0 +1,50 @@
+
+{% load static %}
+
+
+<div class="">
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid navbar-div">
+        <div>
+            <a class="navbar-brand" href="{% url 'products:home_view' %}" style="float: left;"><img class="navbar-brand-image" src="{% static 'logo.webp' %}" alt=""></a>
+          
+            <a class=" company-name" aria-current="page" style="float: left; margin-top: 17px;"><h4>CompanyName</h4></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        </div>
+
+        <div class="collapse navbar-collapse search-box-div" id="navbarSupportedContent">
+            <div class="search-box-home">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </li>
+                </ul>
+                
+            </div>
+
+            <div>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        {% if request.user.is_authenticated %}
+                        <a class="nav-link" href="#"><button class="btn btn-outline-success" style="width: 100px;">Logout</button></a>
+                        {% else %}
+                        <a class="nav-link" href="#"><button class="btn btn-outline-success" style="width: 100px;">Login</button></a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><button class="btn btn-outline-success" style="width: 100px;">Cart</button></a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        
+    </div>
+</nav>
+</div>
+

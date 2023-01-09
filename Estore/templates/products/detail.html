@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row product_path">
+        <div>
+            <p><a class="product_path_links" href="{% url 'products:home_view' %}">Home</a> | <a class="product_path_links" href="{{ product.product_category.get_category_url }}">{{ product.product_category }}</a> | {{ product.product_name }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        
+            <div class="col-2 product-image-div">
+                <a href=""><img class="product-image" src="{{ product.product_img.url }}" alt="" width="60%"></a>
+                {% for prd in product_images%}
+                    <a href=""><img src="{{ prd.product_image.url }}" alt="" width="60%"></a>
+                {% endfor %}
+
+            </div>
+            <div class="col-10 col-md-4 product-image-div">
+                <img class="product-image" src="{{ product.product_img.url }}" alt="" width="90%">
+            </div>
+        
+        <div class="col-md-6 product-text-div">
+            <h3>{{ product.product_name }}</h3>
+            <p class="product-price">&#x20B9;{{ product.product_final_price }} &nbsp;<del style="color: gray;">&#x20B9;{{ product.product_price }}</del> <em style="color: green;">{{ product.product_discount }}% off</em></p>
+            <p class="product-description">{{ product.product_description }}</p>
+            <a class="btn btn-secondary add-to-cart-btn" href="">Add to Cart</a>
+
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

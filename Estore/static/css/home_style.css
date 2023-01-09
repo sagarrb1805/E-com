@@ -1,0 +1,50 @@
+.categories{
+    overflow-x: hidden;
+    white-space: nowrap;
+    margin-top: 15px;
+    scrollbar-width: thin;
+}
+.categories:hover {
+    overflow-x: scroll;
+}
+
+::-webkit-scrollbar {
+    height: 1px;
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cccca6;
+}
+
+
+.category-image-div{
+    display: inline-block;
+    float: none;
+    text-align: center;
+}
+
+.category-image{
+    width: 50%;
+    height: 50px;
+}
+
+.banner-div{
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center;
+}
+
+.products{
+    text-align: center; 
+    justify-content: center;
+}
+
+.card-div{
+    width: 18em;
+    height: 370px;
+}
+
+.card-img-top{
+    height: 200px;
+}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="categories">
+            {% for category in categories %}
+                <div class='col-4 col-sm-3 col-md-3 col-lg-2 category-image-div'>
+                    <a href="{{ category.get_category_url }}"><img class="category-image" src="{{ category.category_image.url }}" alt=""></a>
+                    <p>{{ category.category_name }}</p>
+                </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+
+    {% include 'messages.html' %}
+
+    <div class="container-fluid">
+        <div class="row banner-div" style="background: url({% static 'ChristmasSale.png' %});">
+            
+                <video autoplay="autoplay" loop muted style="height: 100px;">
+                    <source src="{% static 'ChristmasSale.mp4' %}" type="video/mp4">
+                    <source src="{% static 'ChristmasSale.webm' %}" type="video/webm">
+                    <source src="{% static 'ChristmasSale.ogg' %}" type="video/ogg">
+                </video>
+           
+        </div>
+        <div class="row products">
+            
+                {% for product in products%}
+                <div class="card col-md-3 col-sm-6 card-div m-4">
+                    {% if product.product_img %}
+                        <a href="{{ product.get_absolute_url }}"><img src="{{ product.product_img.url }}" class="card-img-top" alt="Image not found"></a>
+                    {% else %}
+                        <img src="" class="card-img-top" alt="Image Not Found">
+                    {% endif %}
+                    <div class="card-body">
+                        <p class="card-text">{{ product.product_name }}</p>
+                        <hr>
+                        <p class="card-text"><a href="#"><button class="btn btn-outline-secondary" style="margin-right: 10px;">Add to Cart</button></a>&#x20B9;{{ product.product_final_price }} &nbsp;<del style="color: gray;">&#x20B9;{{ product.product_price }}</del>  </p>
+                        <p><em style="color: green;">{{ product.product_discount }}% off</em></p>
+                    </div>
+                </div> 
+                {% endfor %}
+
+        </div>
+
+        <div class="mx-auto">
+            {% if products.paginator.num_pages > 1 %}
+                <hr>
+                <div class="text-center">
+                    {% for pg in products.paginator.page_range %}
+                    <a href="?page={{pg}}" class="btn btn-light btn-sm {% if products.number == pg %} active {% endif %}">{{ pg }}</a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
