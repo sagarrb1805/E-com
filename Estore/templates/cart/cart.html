@@ -36,11 +36,11 @@
                     <td class="text-lef">
                         {{ cart_item.product.name }}<br>
                         SKU: {{ cart_item.product.id }}<br>
-                        Price: ${{ cart_item.product.product_price }}<br>
+                        Price: &#x20B9;{{ cart_item.product.product_price }}<br>
                         Qty: {{ cart_item.quantity }} x  {{ cart_item }}
                     </td>
                     <td>
-                        $ {{ cart_item.sub_total }}
+                        &#x20B9; {{ cart_item.sub_total }}
                     </td>
                     {% if cart_item.quantity < cart_item.product.stock %}
                     <td>
@@ -79,7 +79,7 @@
             </tbody>
         </table>
         <div class="mx-auto">
-            <a href="{% url 'products:home_view' %}" class="btn btn-secondary btn-block my_custom_button" style="background : #f5ffbd; color:black;">Place your Order</a>
+            <a href="#" class="btn btn-secondary btn-block my_custom_button" style="background : #f5ffbd; color:black;">Place your Order</a>
         </div>
     </div>
 </div>

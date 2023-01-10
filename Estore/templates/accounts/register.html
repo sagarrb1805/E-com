@@ -26,7 +26,7 @@
                     <div>
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><button class="btn btn-outline-success" style="width: 100px;">Login</button></a>
+                                <a class="nav-link" href="{% url 'accounts:user_login' %}"><button class="btn btn-outline-success" style="width: 100px;">Login</button></a>
                             </li>
                             
                         </ul>
@@ -67,7 +67,7 @@
                 <button type="submit" class="form-btn btn btn-secondary">Submit</button>
                 
             </form>
-            <p>Already have an account? <a href="">Login.</a></p>
+            <p>Already have an account? <a href="{% url 'accounts:user_login' %}">Login.</a></p>
         </div>
     </div>
 

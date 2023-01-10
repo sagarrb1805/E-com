@@ -27,7 +27,7 @@
             <h3>{{ product.product_name }}</h3>
             <p class="product-price">&#x20B9;{{ product.product_final_price }} &nbsp;<del style="color: gray;">&#x20B9;{{ product.product_price }}</del> <em style="color: green;">{{ product.product_discount }}% off</em></p>
             <p class="product-description">{{ product.product_description }}</p>
-            <a class="btn btn-secondary add-to-cart-btn" href="">Add to Cart</a>
+            <a class="btn btn-secondary add-to-cart-btn" href="{% url 'cart:add_cart' product.id  %}">Add to Cart</a>
 
         </div>
     </div>
