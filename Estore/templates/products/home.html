@@ -38,7 +38,7 @@
                     <div class="card-body">
                         <p class="card-text">{{ product.product_name }}</p>
                         <hr>
-                        <p class="card-text"><a href="#"><button class="btn btn-outline-secondary" style="margin-right: 10px;">Add to Cart</button></a>&#x20B9;{{ product.product_final_price }} &nbsp;<del style="color: gray;">&#x20B9;{{ product.product_price }}</del>  </p>
+                        <p class="card-text"><a href="{% url 'cart:add_cart' product.id %}"><button class="btn btn-outline-secondary" style="margin-right: 10px;">Add to Cart</button></a>&#x20B9;{{ product.product_final_price }} &nbsp;<del style="color: gray;">&#x20B9;{{ product.product_price }}</del>  </p>
                         <p><em style="color: green;">{{ product.product_discount }}% off</em></p>
                     </div>
                 </div> 
