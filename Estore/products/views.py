@@ -26,6 +26,33 @@ def home_view(request, category=None):
 
     return render(request, 'products/home.html', {'categories':categories, 'products':products})
 
+
+
+
+# def product_search_view(request, products, categories):
+#     paginator = Paginator(products, 8)
+#     try:
+#         page = int(request.GET.get('page', '1'))
+#     except:
+#         page = 1
+#     try:
+#         products = paginator.page(page)
+#     except (EmptyPage, InvalidPage):
+#         products = paginator.page(paginator.num_pages)
+#     return render(request, 'products/home.html',{'products': products, 'categories':categories})
+
+def product_search_view(request):
+    query = request.GET.get("q")
+    products = Product.objects.search(query=query)
+    categories = Category.objects.all()
+    return render(request, 'products/home.html',{'products': products, 'categories':categories})
+
+    # return product_search_view(request, products, categories)
+
+
+
+
+
 def product_detail_view(request, cat=None, prd=None):
     product_images = None
     product = None

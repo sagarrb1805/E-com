@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.signals import pre_save
+from django.db.models import Q
 from django.urls import reverse
 
 from .utils import slugify_name, slugify_category_name, calculate_final_price
@@ -27,6 +28,17 @@ pre_save.connect(category_pre_save, sender=Category)
 
 
 
+
+
+class ModelManage(models.Manager):
+    def search(self, query=None):
+        if query is None or '':
+            return self.get_queryset().none()
+        lookups = Q(product_name__icontains=query) | Q(product_description__icontains=query)
+        return self.get_queryset().filter(lookups)
+
+
+
 class Product(models.Model):
     product_name = models.CharField(max_length=250)
     product_description = models.TextField(null=True, blank=True)
@@ -39,6 +51,8 @@ class Product(models.Model):
     stock = models.IntegerField(default=10)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    objects = ModelManage()
 
     def __str__(self):
         return self.product_name
