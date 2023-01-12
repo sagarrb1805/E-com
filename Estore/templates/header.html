@@ -18,8 +18,9 @@
             <div class="search-box-home">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li>
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <form class="d-flex" role="search" action="{% url 'products:product_search_view' %}" method='GET'>
+                            
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </li>
