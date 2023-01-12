@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
+from django.http import HttpResponseRedirect
 
 
 def user_register(request):
@@ -34,6 +35,7 @@ def user_register(request):
     return render(request, 'accounts/register.html')
 
 def user_login(request):
+    next_url = request.GET.get('next')
     if request.method == 'POST':
         username = request.POST.get('email')
         password = request.POST.get('password')
@@ -42,6 +44,8 @@ def user_login(request):
 
         if user is not None:
             login(request, user)
+            if next_url:
+                return HttpResponseRedirect(next_url)
             return redirect('products:home_view')
         else:
             messages.error(request, 'Bad credentials')
